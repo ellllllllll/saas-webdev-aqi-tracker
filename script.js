@@ -1,7 +1,7 @@
-API_KEY='19dd68f5f7df450c936afb3707058c90';
+const weather_bit = process.env.WEATHER_BIT_API_KEY;
 function getAQI() {
   let zipcode = document.getElementById('zipcode').value;
-  const url = `https://api.weatherbit.io/v2.0/current/airquality?postal_code=${zipcode}&country=US&key=${API_KEY}`
+  const url = `https://api.weatherbit.io/v2.0/current/airquality?postal_code=${zipcode}&country=US&key=${weather_bit}`
 
   fetch(url) // Call the fetch function passing the url of the API as a parameter
   .then(response => response.json())
