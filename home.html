@@ -4,11 +4,24 @@
     <title>AQI Tracker</title>
   </head>
   <body>
-    <h2>AQI</h2>
-    <p>AQI for given zipcode</p>
+    <h3>AQI</h2>
+    <h2>AQI for given zipcode</h2>
     <input type="text" id="zipcode" />
     <button onclick="getAQI()">Get AQI</button>
-    <p id="aqi"></p>
+    <p id="aqi-zipcode"></p>
+
+    <h2>Past Hourly AQI (most recent to least recent)</h2>
+    <div id="pastAQI">
+    </div>
+
+    <h2>Forecasted Hourly AQI</h2>
+    <div id="forecastAQI">
+    </div>
+
+    <!-- <p>AQI for given city</p>
+    <input type="text" id="city" />
+    <button onclick="callAqiCN()">Get AQI</button>
+    <p id="aqi-city"></p> -->
   </body>
   <script src="script.js"></script>
 </html>
