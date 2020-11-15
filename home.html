@@ -7,20 +7,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body>
-    <h3>AQI</h2>
-    <h2>AQI for given zipcode</h2>
-    <input type="text" id="zipcode" />
-    <button onclick="getAQI()">Get AQI</button>
-    <p id="aqi-zipcode"></p>
-
-    <h2>Past Hourly AQI (most recent to least recent)</h2>
-    <div id="pastAQI">
+    <div class="jumbotron text-center">
+      <h1>Air Quality Tracker</h1>
+      <h2>AQI for given zipcode</h2>
+      <input type="text" id="zipcode" />
+      <button onclick="getAQI()">Get AQI</button>
     </div>
 
-    <h2>Forecasted Hourly AQI</h2>
-    <div id="forecastAQI">
-    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Current Air Quality</h3>
+          <p id="aqi-zipcode"></p>
+        </div>
+        <div class="col-sm-6">
+          <h3>Safety Precautions</h3>        
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Historical Data</h3>
+          <h2>Past Hourly AQI (most recent to least recent)</h2>
+          <div id="pastAQI"></div>
 
+          <h2>Forecasted Hourly AQI</h2>
+            <div id="forecastAQI">
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+  
     <!-- <p>AQI for given city</p>
     <input type="text" id="city" />
     <button onclick="callAqiCN()">Get AQI</button>
