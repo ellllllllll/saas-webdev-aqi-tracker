@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AQI Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   </head>
   <body>
-    <h2>AQI</h2>
-    <p>AQI for given zipcode</p>
-    <input type="text" id="zipcode" />
-    <button onclick="getAQI()">Get AQI</button>
-    <p id="aqi"></p>
+    <div class="jumbotron text-center">
+      <h1>Air Quality Tracker</h1>
+      <input type="text" id="zipcode" placeholder="Enter zipcode" />
+      <button onclick="getAQI()">Get AQI</button>
+    </div>
+  
+    <div class="container">
+      <div class="row">  
+        <div class="col-sm-6">
+          <h3>Current Air Quality</h3>
+          <p id="aqi">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        </div>
+        <div class="col-sm-6">
+          <h3>Safety Precautions</h3>        
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Historical Data</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>

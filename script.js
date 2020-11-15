@@ -1,4 +1,4 @@
-const weather_bit = process.env.WEATHER_BIT_API_KEY;
+const weather_bit = "f268fce711b3460eb6582cc4aaa735c3";//process.env.WEATHER_BIT_API_KEY;
 function getAQI() {
   let zipcode = document.getElementById('zipcode').value;
   const url = `https://api.weatherbit.io/v2.0/current/airquality?postal_code=${zipcode}&country=US&key=${weather_bit}`
