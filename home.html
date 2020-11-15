@@ -11,10 +11,11 @@
       <h1>Air Quality Tracker</h1>
       <h2>AQI for given zipcode</h2>
       <input type="text" id="zipcode" />
-      <button onclick="getAQI()">Get AQI</button>
+      <button onclick="getCurrentAQI()">Get AQI</button>
     </div>
 
     <div class="container">
+      
       <div class="row">
         <div class="col-sm-6">
           <h3>Current Air Quality</h3>
@@ -27,26 +28,32 @@
           <p id = 'safety-precautions'></p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <h3>Historical Data</h3>
-          <h2>Past Hourly AQI (most recent to least recent)</h2>
-          <div id="pastAQI"></div>
 
-          <h2>Forecasted Hourly AQI</h2>
-            <div id="forecastAQI">
-            </div>
+      <div class="row">
+        <h3>Historical Data</h3>
+        <div class="col-sm-6">
+          <h5>Past Hourly AQI (most recent to least recent)</h5>
+          <div id="pastAQI"></div>
+          <canvas id="pastAQIChart" width="400" height="400"></canvas>
+        </div>
+
+        <div class="col-sm-6">
+          <h5>Forecasted Hourly AQI</h5>
+          <div id="forecastAQI"></div>
+           <canvas id="forecastAQIChart" width="400" height="400"></canvas>
         </div>
       </div>
-
-
     </div>
   
+    
+
+   
     <!-- <p>AQI for given city</p>
     <input type="text" id="city" />
     <button onclick="callAqiCN()">Get AQI</button>
     <p id="aqi-city"></p> -->
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
   <script src="script.js"></script>
 </html>
 
