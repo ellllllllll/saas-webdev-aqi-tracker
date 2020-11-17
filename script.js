@@ -10,7 +10,7 @@ function getCurrentAQI() {
   .then(function(data) {
       console.log(data);
       let aqi = data.data[0].aqi;
-      document.getElementById("aqi-zipcode").innerHTML = aqi;
+      document.getElementById("aqi-current").innerHTML = aqi;
       let category = "";
       let meaning = "";
       let precautions = "";
@@ -67,7 +67,7 @@ function getPastAQI(zipcode) {
       
       let pastLabels = [];
       let pastData = []
-      for (i = 0; i < aqiData.length; i++) {
+      for (i = aqiData.length - 1; i >= 0; i -= 1) {
         hourlyPastAQI[i] = {};
         hourlyPastAQI[i][aqiData[i]['timestamp_local']] = aqiData[i]['aqi'];
         pastLabels.push(aqiData[i]['timestamp_local']);
@@ -109,6 +109,7 @@ function getForecastAQI(zipcode) {
 }
 
 
+//TO-DO: style graphs to have the same y-axis scaling
 //for generating the chart
 function createGraph(labels, data, id) {
   var ctx = document.getElementById(id).getContext('2d');
@@ -117,9 +118,10 @@ function createGraph(labels, data, id) {
       data: {
           labels: labels,
           datasets: [{
-              label: 'Timestamp',
+              label: 'AQI',
               data: data,
-              borderWidth: 1, 
+              borderWidth: 2, 
+              fill:  false
               
           }]
       },
