@@ -1,13 +1,19 @@
-.firstrow {
-	background-color: rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	border-radius: 5px;
+.firstrow1 {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.firstrow2 {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
 }
 
 #aqi-current {
-	font-size: 5em;
+  font-size: 5em;
 }
 
 .row {
-	text-align: center;
+  text-align: center;
 }
