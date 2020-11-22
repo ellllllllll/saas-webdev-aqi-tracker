@@ -1,5 +1,8 @@
 const weather_bit = '19dd68f5f7df450c936afb3707058c90';
 
+var pastChart = null;
+var forecastChart = null;
+
 function getCurrentAQI() {
   let zipcode = document.getElementById('zipcode').value;
   const currentAQI_url = `https://api.weatherbit.io/v2.0/current/airquality?postal_code=${zipcode}&country=US&key=${weather_bit}`
@@ -48,6 +51,7 @@ function getCurrentAQI() {
       document.getElementById("aqi-category").innerHTML = "<b>" + category + "</b>";
       document.getElementById("aqi-meaning").innerHTML = meaning;
       document.getElementById("safety-precautions").innerHTML = precautions;
+
       getForecastAQI(zipcode);
       getPastAQI(zipcode);
   })
@@ -73,8 +77,8 @@ function getPastAQI(zipcode) {
         pastLabels.push(aqiData[i]['timestamp_local']);
         pastData.push(aqiData[i]['aqi']);
       }
-     
-      createGraph(pastLabels, pastData, "pastAQIChart");
+
+      pastChart = createGraph(pastLabels, pastData, "pastAQIChart", pastChart);
   })
   .catch(function() {
       // This is where you run code if the server returns any errors
@@ -89,8 +93,7 @@ function getForecastAQI(zipcode) {
   .then(function(data) {
       let aqiData = data.data;
       let hourlyForecastAQI = {};
-      console.log(aqiData);
-
+    
       let forecastLabels = [];
       let forecastData = [];
       for (i = 0; i < aqiData.length; i++) {
@@ -99,9 +102,10 @@ function getForecastAQI(zipcode) {
         forecastLabels.push(aqiData[i]['timestamp_local']);
         forecastData.push(aqiData[i]['aqi']);
       }
-      createGraph(forecastLabels, forecastData, "forecastAQIChart");
 
-      console.log(hourlyForecastAQI); //stores each hour and its aqi (for future 72 hours) in dictionary
+      console.log("forecast AQI");
+      console.log(forecastData);
+      forecastChart = createGraph(forecastLabels, forecastData, "forecastAQIChart", forecastChart);
   })
   .catch(function() {
       // This is where you run code if the server returns any errors
@@ -110,29 +114,41 @@ function getForecastAQI(zipcode) {
 
 
 //TO-DO: style graphs to have the same y-axis scaling
+//take the max 
+// color points on plot
 //for generating the chart
-function createGraph(labels, data, id) {
+
+
+
+function createGraph(labels, data, id, myChart) {
+  console.log('createGraph');
+  console.log(myChart);
+  if (myChart != null) {
+    myChart.destroy();
+  }
+  
   var ctx = document.getElementById(id).getContext('2d');
-  var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: labels,
-          datasets: [{
-              label: 'AQI',
-              data: data,
-              borderWidth: 2, 
-              fill:  false
-              
-          }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true
-                  }
-              }]
-          }
-      }
-  });
+  myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'AQI',
+                data: data,
+                borderWidth: 2, 
+                fill:  false
+                
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+  return myChart;
 }
